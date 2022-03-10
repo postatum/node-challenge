@@ -17,6 +17,7 @@ module.exports = {
   https: {
     enabled: false,
   },
+  auth: {},
   port: process.env.PORT || 9001,
   shutdown: {
     appKill: 1000,
