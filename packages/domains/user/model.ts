@@ -1,8 +1,9 @@
-import { format } from './formatter';
 import { readUser } from './data/db-user';
+import { secureTrim } from '@nc/utils/formatter';
 import { to } from '@nc/utils/async';
 import { User } from './types';
 import { BadRequest, InternalError, NotFound } from '@nc/utils/errors';
+import { formatUser, publicFields } from './formatter';
 
 export async function getUserDetails(userId): Promise<User> {
   if (!userId) {
@@ -19,5 +20,5 @@ export async function getUserDetails(userId): Promise<User> {
     throw NotFound(`Could not find user with id ${userId}`);
   }
 
-  return format(rawUser);
+  return formatUser(secureTrim(rawUser, publicFields));
 }

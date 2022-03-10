@@ -1,5 +1,6 @@
 import config from 'config';
 import context from './middleware/context';
+import { router as expensesRoutes } from '@nc/domain-expenses';
 import express from 'express';
 import gracefulShutdown from '@nc/utils/graceful-shutdown';
 import helmet from 'helmet';
@@ -18,6 +19,7 @@ server.ready = false;
 
 gracefulShutdown(server);
 
+app.use(express.json());
 app.use(helmet());
 app.get('/readycheck', function readinessEndpoint(req, res) {
   const status = (server.ready) ? 200 : 503;
@@ -32,6 +34,7 @@ app.use(context);
 app.use(security);
 
 app.use('/user', userRoutes);
+app.use('/expenses', expensesRoutes);
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 app.use(function(err, req, res, next) {

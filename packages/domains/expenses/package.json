@@ -1,7 +1,7 @@
 {
-  "name": "@nc/domain-user",
+  "name": "@nc/domain-expenses",
   "version": "0.0.0",
-  "description": "User domain logic",
+  "description": "Expenses domain logic",
   "private": true,
   "dependencies": {
     "@nc/utils": "^0.0.0",

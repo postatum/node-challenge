@@ -20,6 +20,9 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
+-- Development password for user 'postgres'
+ALTER USER postgres PASSWORD 'postgres';
+
 --
 -- Name: expenses; Type: TABLE; Schema: public; Owner: postgres
 --
