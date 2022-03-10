@@ -1,4 +1,6 @@
-const enabled = (process.env.NODE_DEBUG || '').indexOf('DEBUG') > -1 && process.env.TEST_MODE !== 'test';
+const enabled = (
+  (process.env.NODE_DEBUG || '').indexOf('DEBUG') > -1
+  && process.env.TEST_MODE !== 'test');
 const pid = process.pid;
 
 function print(namespace: string, level: string) {
@@ -17,7 +19,9 @@ function print(namespace: string, level: string) {
 }
 
 export default function debug(namespace: string) {
-  if (typeof namespace !== 'string' || namespace.length < 1) throw new Error(`Logging namespace is not a string: ${namespace}\n\n`);
+  if (typeof namespace !== 'string' || namespace.length < 1) {
+    throw new Error(`Logging namespace is not a string: ${namespace}\n\n`);
+  }
 
   return {
     log: print(namespace, 'log'),

@@ -33,6 +33,7 @@ app.use(security);
 
 app.use('/user', userRoutes);
 
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 app.use(function(err, req, res, next) {
   res.status(500).json(err);
 });
