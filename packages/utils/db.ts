@@ -10,6 +10,5 @@ export function connect() {
 
 export async function query(queryString: string, parameters?: any) {
   if (!db) await connect();
-
   return db.query(queryString, parameters);
 }
