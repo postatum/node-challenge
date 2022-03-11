@@ -1,11 +1,17 @@
-import { Expenses } from './types';
 import { getExpenses } from './data/db-expenses';
 import { secureTrim } from '@nc/utils/formatter';
 import { to } from '@nc/utils/async';
+import { Expenses, URLQuery } from './types';
 import { formatExpenses, publicFields } from './formatter';
 import { InternalError, NotFound } from '@nc/utils/errors';
 
-export async function getUserExpenses(urlQuery): Promise<Expenses> {
+/**
+ * Gets user expenses dat afrom a database and handles exceptions.
+ *
+ * @param {URLQuery} urlQuery - URL Query data to search expenses with.
+ * @returns {Array<Expenses>} - Promise with formatted Expenses list.
+ */
+export async function getUserExpenses(urlQuery: URLQuery): Array<Expenses> {
   const [dbError, rawData] = await to(getExpenses(urlQuery));
 
   if (dbError) {

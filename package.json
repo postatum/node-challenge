@@ -14,7 +14,7 @@
   },
   "scripts": {
     "watch": "nodemon $npm_package_main",
-    "start-dev": "NODE_DEBUG=DEBUG node $npm_package_main",
+    "start-dev": "NODE_ENV=dev NODE_DEBUG=DEBUG node $npm_package_main",
     "start": "node $npm_package_main",
     "lint": "eslint --ext .ts --ext .js .",
     "lint:fix": "eslint --ext .ts --ext .js . --fix",

@@ -1,7 +1,13 @@
 import format from 'pg-format';
 import { query } from '@nc/utils/db';
+import { URLQuery } from '../types';
 
-export function getExpenses(urlQuery) {
+/**
+ * Gets user expenses data from a database.
+ *
+ * @param {URLQuery} urlQuery - URL Query data to search expenses with.
+ */
+export function getExpenses(urlQuery: URLQuery): Promise<Array<object>> {
   // Process filter fields
   const fields = ['merchant_name', 'currency', 'status'];
   let extraFilters = '';
